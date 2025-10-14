@@ -1,9 +1,6 @@
 #E ink Smart display
 ## A communicating e-paper picture frame, powered by a Raspberry Pi Zero
 
-
-
-
 The e-ink frame displays an image pulled from a fixed URL at regular intervals. At this URL resides a Flask app hosted on Google Cloud Run. Whenever it is pinged, it pulls the latest image received in a Gmail inbox and overlays text extracted from that same message. 
 
 There are two folders to browse here:
