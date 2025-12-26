@@ -26,11 +26,13 @@ logging.basicConfig(filename=log_file_path,
 def show_image(image):
     try:
         # Display init, clear
+        print("displaying the image may take 5-10 seconds")
         display = epd7in5_V2.EPD()
+        print("printing image on screen now ")
         display.init() #update 
         
         #display the image
-        display.display(display.getbuffer(image)) 
+        display.display(display.getbuffer(image))
 
     except IOError as e:
             print(e)
@@ -41,7 +43,7 @@ def show_image(image):
 try:
     logging.info("Pulling image from web")
     # don't forget to point to the proper url view
-    filename="youtube.com"
+    filename="your_own_link_goes_here"
 
     #pull image from web
     response = requests.get(filename, stream=True)

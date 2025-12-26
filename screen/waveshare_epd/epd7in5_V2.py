@@ -32,8 +32,8 @@ import logging
 from . import epdconfig
 
 # Display resolution
-EPD_WIDTH       = 800
-EPD_HEIGHT      = 480
+EPD_WIDTH       = 800 #og - 800
+EPD_HEIGHT      = 480 #og - 480
 
 logger = logging.getLogger(__name__)
 
@@ -47,7 +47,7 @@ class EPD:
         self.height = EPD_HEIGHT
     
     Voltage_Frame_7IN5_V2 = [
-	0x6, 0x3F, 0x3F, 0x11, 0x24, 0x7, 0x17,
+	0x6, 0x3F, 0x3F, 0x11, 0x24, 0x7, 0x17, ##0x17 (og) incre by 1 for higher volatage
     ]
 
     LUT_VCOM_7IN5_V2 = [	

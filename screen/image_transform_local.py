@@ -7,12 +7,13 @@ import textwrap
 class Image_transform:
     def __init__(self, imported_image, fit="crop"):
         self.imported_image=imported_image
-
     def render(self, fit="crop"):
-        # fit can be "width" or "crop" or "height"
+    ##def render(self, fit="crop"):
+        
+        # fit can be "width" or "crop" or "height" or "exact_crop"
+        # "exact_crop" specifically handles 480x800 -> 400x600 transformation
         #we are using the screen in portrait mode and so flipping the default landscape mode
-        w = 480
-        h = 800
+        w = 480 
         
         #create canvas in portrait mode
         canvas = Image.new(mode="1", size=(w, h), color=255) #fill colour for blank space (so, clear frame first)
@@ -74,7 +75,24 @@ class Image_transform:
 
             #Paste image on canvas
             canvas.paste(image, (0, 0))
+            
+        #option 4 : exact crop for 480x800 -> 400x600 transformation
+        if fit=="exact_crop":
+            # This option is specifically for cropping 480x800 server images to 400x600 e-ink display
+            
+            # Calculate crop area to center the 400x600 area within the 480x800 image
+            # Horizontal crop: remove 40 pixels from each side (480-400=80, 80/2=40)
+            # Vertical crop: remove 100 pixels from each side (800-600=200, 200/2=100)
+            
+            left = 40    # (480 - 400) / 2
+            top = 100    # (800 - 600) / 2  
+            right = 440  # 480 - 40
+            bottom = 700 # 800 - 100
+            
+            # Crop the center 400x600 area from the 480x800 image
+            image = image.crop((left, top, right, bottom))
+            
+            #Paste image on canvas (which is now 400x600)
+            canvas.paste(image, (0, 0))
         
         return(canvas)
-
-
