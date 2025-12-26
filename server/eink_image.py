@@ -13,8 +13,8 @@ class Image_transform:
     def render(self, fit="crop"):
         # fit can be "width" or "crop" or "height"
         #we are using the screen in portrait mode and so flipping the default landscape mode
-        w = 480
-        h = 800
+        w = 480  #og 480: Test 1, do it change the size of the image (___)?
+        h = 800  #og 800: Test 1, do it change the size of the image (___)?
         
         #create canvas in portrait mode
         canvas = Image.new(mode="1", size=(w, h), color=255) #fill colour for blank space (so, clear frame first)
