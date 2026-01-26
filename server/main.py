@@ -49,7 +49,7 @@ def pull_and_display_image(frame_type, creds):
     """Pull an image from Gmail and display it."""
     try:
         # Initialize Gmail connector
-        gmail_inbox = Gmail_connector(creds=creds, satellite_emails=["of8179333@gmail.com"])
+        gmail_inbox = Gmail_connector(creds=creds, satellite_emails=["EMAIL_GOES_HERE"])
 
         # Pull attachments from Gmail - always use 'me' as userID for Gmail API
         gmail_inbox.pull_attachments("me")
